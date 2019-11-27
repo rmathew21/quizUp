@@ -1,8 +1,8 @@
-let card = $("#quiz-area");
-let countStartNumber = 30;
+var card = $("#quiz-area");
+var countStartNumber = 30;
 
 // Question Set
-let questions = [{
+var questions = [{
     question: "What was the first full length CGI movie?",
     answers: ["A Bug's Life", "Monsters Inc.", "Toy Story", "The Lion King"],
     correctAnswer: "Toy Store",
@@ -45,9 +45,10 @@ let questions = [{
 }];
 
 // Variable to hold our setInterval
-let timer;
+var timer;
 
-let game = {
+var game = {
+
     questions: questions,
     currentQuestion: 0,
     counter: countStartNumber,
@@ -64,10 +65,12 @@ let game = {
     },
 
     loadQuestion: function () {
+
         timer = setInterval(this.countdown.bind(this), 1000);
+
         card.html("<h2>" + questions[this.currentQuestion].question + "</h2>");
 
-        for (let i = 0; i < questions[this.currentQuestion].answers.length; i++) {
+        for (var i = 0; i < questions[this.currentQuestion].answers.length; i++) {
             card.append("<button class='answer-button' id='button' data-name'" + questions[this.currentQuestion].answers[i]
                 + "'>" + questions[this.currentQuestion].answers[i] + "</button>");
         }
@@ -106,7 +109,7 @@ let game = {
         card.append("<h3>Correct Answers: " + this.correct + "<h3>");
         card.append("<h3>Incorrect Answers: " + this.incorrect + "<h3>");
         card.append("<h3>Unanswered: " + (questions.length - (this.incorrect + this.correct)) + "<h3>");
-        card.append("<br><button id+'start-over'>Start Over?</button>");
+        card.append("<br><button id='start-over'>Start Over?</button>");
     },
 
     clicked: function (e) {
